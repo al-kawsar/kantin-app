@@ -1,0 +1,9 @@
+
+@media screen and (max-width: 768px) {
+
+nav ul li:hover {
+    transition: .75s;
+    background-color: #333;
+}
+
+}

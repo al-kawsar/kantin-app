@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+Kantin: <a class="btn btn-primary" href="{% url 'home' %}">Semua</a> 
+{% for kantin in kantins %}
+  <a class="btn btn-primary" href="?kantin_id={{ kantin.id }}">{{ kantin.nama }}</a>
+{% endfor %}
+    <form method="get" action="">
+                <div class="mb-3">
+                  <label class="form-label">Cari Menu Makanan:</label>
+                  <input type="text" name="nama" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+              {% if searchMakanan %}
+                Pencarian untuk {{ searchMakanan }}
+              {% endif %}
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for makanan in makanans %}
+                      <div class="col">
+                        <div class="card">
+                          <img alt="{{ makanan.nama }}" class="card-img-top" src="{{ makanan.gambar.url }}" />
+                          <div class="card-body">
+                            <h5 class="card-title fw-bold">{{ makanan.nama }} | {{ makanan.kantin.nama }}</h5>
+                            <p class="card-text">
+                                Stok : {{ makanan.stok }} | 
+                                {% if makanan.tersedia == '1' %}
+                                    Tersedia
+                                {% else %}
+                                    Tidak Tersedia
+                                {% endif %}
+                                | Harga Rp.{{ makanan.harga }}
+                              <br/>
+                            </p>
+                            <a class="btn btn-primary" href="{% url 'detail' makanan.id %}">Detail</a>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+{% endblock content %}
