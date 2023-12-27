@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<p/>
+<div class="col-sm-8 container d-flex align-items-center justify-content-center" style="width: 32rem;">
+  <div class="card">
+    <img alt="" class="card-img-top" src="{{ makanan.gambar.url }}" />
+    <div class="card-body">
+        <h5 class="card-title fw-bold">{{ makanan.nama }} | {{ makanan.kantin.nama }}</h5>
+      <p class="card-text">
+        {{ makanan.stok }} | {{ makanan.tersedia }} | Harga Rp.{{ makanan.harga }}
+      </p>
+      <a href='#' onclick="history.back()">Back</a>
+    </div>
+  </div>
+</div>
+<p/>
+{% endblock content %}
